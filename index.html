@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link type="text/css" rel="stylesheet" href="main.css">
+    <script type="importmap">
+        {
+            "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.182.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.182.0/examples/jsm/"
+            }
+        }
+        </script>
+        <script type="module" src="scripts/main.js"></script>
+    <title>FFXIV Body library</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <style>
+        .container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: ew-resize;
+
+            width: 40px;
+            height: 40px;
+            background-color: #F32196;
+            opacity: 0.7;
+            border-radius: 50%;
+
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+        }
+    </style>
+</head>
+
+<body>
+   <script>0</script> <!-- Fix for firefox -->
+    <div id="info">
+        FFXIV Body library<br/>
+    </div>
+        <div class="sidemenu" id="leftmenu">
+            <div class="bodyName"></div><br/>
+            <div class="currentSize"></div><br/>
+            <div class="options">
+                Body: <select class="bodyMenu"></select><br/>
+                Chest size: <select class="topSelect"></select><br/>
+                Leg size: <select class="bottomSelect"></select><br/>
+            </div>
+        </div>
+
+        <div class="sidemenu" id="rightmenu">
+            <div class="bodyName"></div><br/>
+            <div class="currentSize"></div><br/>
+            <div class="options">
+                Body: <select class="bodyMenu"></select><br/>
+                Chest size: <select class="topSelect"></select><br/>
+                Leg size: <select class="bottomSelect"></select><br/>
+            </div>
+        </div>
+    <div class="container">
+        <div class="slider"></div>
+    </div>
+
+</body>
+
+</html>

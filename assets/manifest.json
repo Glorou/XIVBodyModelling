@@ -1,0 +1,124 @@
+{
+    "bodies": [
+        {
+            "name": "Tre",
+            "model": "assets/models/bodies/Tre.glb",
+            "material": "bibo",
+            "sizes":{
+                    "tops":{
+                        "Large": "Tre Large",
+                        "Medium": "Tre Medium (Basis)",
+                        "Small": "Tre Small"
+
+                    },
+                    "bottoms":{
+                        "Large": "default",
+                        "Medium": "Medium Legs"
+                    }
+                },
+            "selectedSize":{
+                "top":"Medium",
+                "bottom":"Large"
+            },
+            "morphs":[
+
+            ]
+        },
+        {
+            "name": "YAB",
+            "model": "assets/models/bodies/YAB.glb",
+            "material": "bibo",
+            "sizes":{
+                "tops":{
+                    "Large": "LARGE",
+                    "Medium": "MEDIUM",
+                    "Small": "SMALL"
+
+                },
+                "bottoms":{
+                    "WC": "default",
+                    "SC": "Skull Crushers"
+                }
+            },
+            "selectedSize":{
+                "top":"Large",
+                "bottom":"WC"
+            }
+
+        },
+        {
+            "name": "Bibo",
+            "model": "assets/models/bodies/Bibo.glb",
+            "material": "bibo",
+            "sizes":{
+                    "tops":{
+                        "XL": "XL Chest",
+                        "Large": "Large Chest",
+                        "Medium": "default",
+                        "Small": "Small Chest"
+
+                    },
+                    "bottoms":{
+                        "Large": "default",
+                        "Medium": "Medium Booty",
+                        "Small": "Small Booty"
+                    }
+                },
+            "selectedSize":{
+                "top":"Medium",
+                "bottom":"Large"
+            },
+            "morphs":[
+
+            ]
+        },
+        {
+            "name": "Neolithe",
+            "model": "assets/models/bodies/Neolithe.glb",
+            "material": "bibo",
+            "sizes":{
+                    "tops":{
+                        "Large": "Default L",
+                        "Medium": "Default M",
+                        "Small": "Default S (Default)",
+                        "XS": "Default XS"
+                    },
+                    "bottoms":{
+                        "Large": "L",
+                        "Medium": "M (Default)",
+                        "Small": "S"
+                    }
+                },
+            "selectedSize":{
+                "top":"Small",
+                "bottom":"Medium"
+            },
+            "morphs":[
+
+            ]
+        },
+        {
+            "name": "Eve",
+            "model": "assets/models/bodies/Eve.glb",
+            "material": "gen3",
+            "sizes":{
+                "tops":{
+                    "Default": "Basis",
+                    "Milky": "Milky",
+                    "Justice": "Justice"
+
+                },
+                "bottoms":{
+                    "Default": "default"
+                }
+            },
+            "selectedSize":{
+                "top":"Default",
+                "bottom":"Default"
+            }
+
+        }
+        
+
+    ]
+}
