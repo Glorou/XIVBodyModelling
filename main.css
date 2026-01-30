@@ -124,3 +124,9 @@ a, button, input, select {
 	opacity: 100;
 	display: inherit;
 }
+.github{
+	position:absolute;
+	bottom: 5px;
+	right: 5px;
+	z-index: 1;
+}
