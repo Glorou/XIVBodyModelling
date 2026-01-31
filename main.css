@@ -144,6 +144,8 @@ a, button, input, select {
 	background:  rgba(114, 114, 114, 0.6);
 	transition: inherit;
 	z-index: inherit;
+	display: flex;
+	justify-content: center;
 }
 
 .arrow{
@@ -166,8 +168,6 @@ a, button, input, select {
 .open>.pane {
 	height: 15%;
 	opacity: 100;
-	display: flex;
-	justify-content: center;
 }
 
 .closed>.pane {
