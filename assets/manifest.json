@@ -43,7 +43,9 @@
             },
             "variants":{
                 "Default": "Default",
-                "Rue" : "Rue"
+                "Rue" : "Rue",
+                "Lavabod": "Lavabod"
+                
             }
             ,
             "selectedVariant":"Default"
@@ -96,7 +98,7 @@
             "variants":{
                 "Default" : "Default",
                 "Almond" : "Almond",
-                "Macadamiea" :"Macadamiea",
+                "Macadamia" :"Macadamia",
                 "Hazelnut" : "Hazelnut",
                 "Pushup" : "Pushup"
             },

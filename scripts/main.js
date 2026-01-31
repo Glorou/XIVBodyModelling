@@ -1,5 +1,5 @@
         import * as THREE from 'three';
-
+        import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js'
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
         import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
@@ -8,6 +8,13 @@
         let biboMat, gen3Mat;
         let meshL, meshR;
         let manager = new THREE.LoadingManager();
+        const loader = new GLTFLoader(manager);
+        const dracoloader = new DRACOLoader(manager);
+        dracoloader.setDecoderPath('scripts/draco/');
+
+        loader.setDRACOLoader(dracoloader);
+
+
 
         let sliderPos = window.innerWidth / 2;
 
@@ -76,7 +83,6 @@
 
 
         function initMeshes() {
-            const loader = new GLTFLoader(manager);
 
             loader.load(bodyL.model, function (gltf) {
                 sceneL.add(gltf.scene);
@@ -181,7 +187,6 @@
 
 
         function changeBody(option, side){
-            const loader = new GLTFLoader(manager);
             var model = modelData.bodies.find((e) => e.name == option.value);
 
             var mesh;
