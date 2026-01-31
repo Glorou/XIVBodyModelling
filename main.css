@@ -125,9 +125,64 @@ a, button, input, select {
 	opacity: 100;
 	display: inherit;
 }
+
+#bottommenu{
+	z-index:1;
+	line-height: normal;
+	transition:
+		width 2s,
+		height 2s,
+		background-color 2s,
+		opacity 2s,
+		bottom 2s;
+}
+
+.pane{
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background:  rgba(114, 114, 114, 0.6);
+	transition: inherit;
+	z-index: inherit;
+}
+
+.arrow{
+	position: absolute;
+	bottom: 5px;
+	right: 50%;
+	border: solid rgb(100, 100, 100);
+  	border-width: 0 3px 3px 0;
+  	padding: 3px;
+	transform: rotate(-135deg);
+  	-webkit-transform: rotate(-135deg);
+	z-index: 1;
+	transition: inherit;
+}
+
+.open>.arrow {
+	bottom: calc(15% + 5px);
+}
+
+.open>.pane {
+	height: 15%;
+	opacity: 100;
+	display: flex;
+	justify-content: center;
+}
+
+.closed>.pane {
+	height: 0%;
+	opacity: 0;
+
+}
+
+
+
+
 .github{
 	position:absolute;
 	bottom: 5px;
 	right: 5px;
 	z-index: 1;
+	
 }

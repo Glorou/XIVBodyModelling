@@ -15,6 +15,8 @@
         let bodyL, bodyR;
         let menuR, menuL;
 
+        document.getElementById("bottomarrow").addEventListener('mouseover', bottomMenu)
+        document.getElementById("boobslider").addEventListener('input', changeBreastSize)
         await loadManifest();
 
         init();
@@ -231,7 +233,38 @@
             }
 
         }
-        
+        //TODO: add full racial deforms https://github.com/TexTools/xivModdingFramework/blob/master/xivModdingFramework/Models/FileTypes/PDB.cs#L225
+        function changeBreastSize(){
+            var boobSlider = document.getElementById("boobslider");
+
+            var skL = meshL.skeleton;
+            var skR = meshR.skeleton;
+
+
+
+            var width = (0.16 * boobSlider.value + 92) / 100;
+            var depth = (0.368 * boobSlider.value + 81.6) / 100;
+            var height = (0.4 * boobSlider.value + 80) / 100;
+            var breastBones = Array( 
+                skL.getBoneByName("j_mune_r"),
+                skL.getBoneByName("j_mune_l"),
+                skR.getBoneByName("j_mune_r"),
+                skR.getBoneByName("j_mune_l")
+            );
+
+            var vector = new THREE.Vector3(height, width, depth);
+            breastBones.forEach(bone => {
+                bone.scale.copy(vector);
+            });
+
+            document.getElementById("boobslidervalue").innerText = boobSlider.value;
+
+            //.scale = new THREE.Vector3(height, width, depth);
+            //.scale = new THREE.Vector3(height, width, depth);
+            //.scale = new THREE.Vector3(height, width, depth);
+            //.scale = new THREE.Vector3(height, width, depth);
+
+        }
             
         function refreshMat(mesh, body){}
 
@@ -337,5 +370,19 @@
 
             renderer.setScissor(sliderPos, 0, window.innerWidth, window.innerHeight);
             renderer.render(sceneR, camera);
+
+        }
+
+
+        
+        function bottomMenu(){
+            const bottomMenu = document.getElementById("bottommenu");
+            if(bottomMenu.classList.contains("open")){
+                bottomMenu.classList.remove("open");
+                bottomMenu.classList.add("closed");
+            }else{
+                bottomMenu.classList.remove("closed");
+                bottomMenu.classList.add("open");
+            }
 
         }
