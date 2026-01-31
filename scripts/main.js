@@ -14,11 +14,12 @@
         let modelData;
         let bodyL, bodyR;
         let menuR, menuL;
+        let skeletonData = Array();
 
         document.getElementById("bottomarrow").addEventListener('mouseover', bottomMenu)
         document.getElementById("boobslider").addEventListener('input', changeBreastSize)
         await loadManifest();
-
+        //await loadSkeletonValues();
         init();
 
         async function loadManifest(){
@@ -386,3 +387,13 @@
             }
 
         }
+
+        /*async function loadSkeletonValues(){
+            var list = Array("0201", "0401", "0601", "0801", "1401", "1801"); //so I dont forget 201: middie, 401: highlander, 601: elezen, 801: miqo, 1401: au ra, 1801: viera
+
+            list.forEach(async (element) => {
+                const response =  (await (  )).text();
+                skeletonData += JSON.parse(response);
+            })
+
+        }*/
