@@ -19,10 +19,7 @@
             "selectedSize":{
                 "top":"Medium",
                 "bottom":"Large"
-            },
-            "morphs":[
-
-            ]
+            }
         },
         {
             "name": "YAB",
@@ -43,7 +40,13 @@
             "selectedSize":{
                 "top":"Large",
                 "bottom":"WC"
+            },
+            "variants":{
+                "Default": "Default",
+                "Rue" : "Rue"
             }
+            ,
+            "selectedVariant":"Default"
 
         },
         {
@@ -67,10 +70,7 @@
             "selectedSize":{
                 "top":"Medium",
                 "bottom":"Large"
-            },
-            "morphs":[
-
-            ]
+            }
         },
         {
             "name": "Neolithe",
@@ -93,9 +93,14 @@
                 "top":"Small",
                 "bottom":"Medium"
             },
-            "morphs":[
-
-            ]
+            "variants":{
+                "Default" : "Default",
+                "Almond" : "Almond",
+                "Macadamiea" :"Macadamiea",
+                "Hazelnut" : "Hazelnut",
+                "Pushup" : "Pushup"
+            },
+            "selectedVariant":"Default"
         },
         {
             "name": "Eve",

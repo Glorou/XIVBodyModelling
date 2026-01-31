@@ -108,7 +108,14 @@
         }
 
         function setInfobar(menu, body){
-            menu.querySelector('.bodyName').innerText = body.name;
+
+            var nameString = body.name;
+            if(body.hasOwnProperty("selectedVariant")){
+                nameString +=" : " +  body.selectedVariant;
+            }
+            menu.querySelector('.bodyName').innerText = nameString;
+
+
             menu.querySelector('.currentSize').innerText = body.selectedSize["top"] + " : " + body.selectedSize["bottom"];
             var side = menu.id;
 
@@ -148,6 +155,27 @@
                 botSelect.appendChild(opt)
             }
             botSelect.value = body.selectedSize.bottom;
+
+            var variants = menu.querySelector(".variants");
+
+            var variantSelector = variants.querySelector(".variantSelect");
+            variantSelector.innerHTML = '';
+            if(body.hasOwnProperty("selectedVariant")){
+                variants.hidden = false;
+                variantSelector.addEventListener("change",function(){changeVariant(this, side)});
+
+                for(var k in body.variants){
+                    var opt = document.createElement('option');
+                    opt.value = k;
+                    opt.innerHTML = k;
+                    //opt.addEventListener("click",function(){changePrimaryShape(this, side, "bottoms")});
+                    variantSelector.appendChild(opt)
+                }
+                variantSelector.value = body.selectedVariant;
+            }else{
+                variants.hidden = true;
+            }
+
 
         }
 
@@ -234,6 +262,39 @@
             }
 
         }
+
+
+        function changeVariant(option, side){
+
+
+            if(side == "leftmenu"){
+                var id = option.value;
+                
+                    for(var k in bodyL.variants){
+                        var temp = meshL.userData.targetNames.indexOf(bodyL.variants[k]);
+                        if(id == k){
+                            meshL.morphTargetInfluences[temp] = 1;
+                        }else{
+                            meshL.morphTargetInfluences[temp] = 0;
+                        }
+                    };   
+                    bodyL.selectedVariant = option.value;
+                    populateInfobar(menuL, bodyL)   
+            }else if(side == "rightmenu"){
+                var id = option.value;
+                    for(var k in bodyR.variants){
+                        var temp = meshR.userData.targetNames.indexOf(bodyR.variants[k]);
+                        if(id == k){
+                            meshR.morphTargetInfluences[temp] = 1;
+                        }else{
+                            meshR.morphTargetInfluences[temp] = 0;
+                        }
+                    }; 
+                    bodyR.selectedVariant = option.value;
+                    populateInfobar(menuR, bodyR)   
+            }
+
+        }
         //TODO: add full racial deforms https://github.com/TexTools/xivModdingFramework/blob/master/xivModdingFramework/Models/FileTypes/PDB.cs#L225
         function changeBreastSize(){
             var boobSlider = document.getElementById("boobslider");
@@ -267,7 +328,13 @@
 
         }
             
-        function refreshMat(mesh, body){}
+        function populateVariants(){
+
+        }
+
+        function setVariant(){
+
+        }
 
         function initMats() {
 
