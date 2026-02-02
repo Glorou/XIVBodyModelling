@@ -106,6 +106,7 @@ a, button, input, select {
 	transition-timing-function: ease-out;
 	transition-delay: 1s;
 	overflow: hidden;
+	padding: 0, 4px, 0, 4px;
 	
 }
 .sidemenu:hover{
@@ -122,6 +123,7 @@ a, button, input, select {
 	text-align: right;
 }
 .sidemenu .options{
+	margin-top: 3px;
 	opacity: 0;
 	text-overflow: clip;
 	overflow: hidden;
@@ -208,9 +210,9 @@ a, button, input, select {
 	line-height: 16px;
 }
 
-.links a{
-	padding: 3px;
+.links a{	
 	color: #fff;
+	margin-inline-end: 6px;
 }
 
 
