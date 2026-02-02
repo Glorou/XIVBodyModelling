@@ -121,6 +121,33 @@
             }
         },
         {
+            "name": "AB",
+            "model": "assets/models/bodies/AB.glb",
+            "material": "ABgen3",
+            "sizes":{
+                "tops":{
+                    "Flat": "AB Flat",
+                    "Small": "AB Small",
+                    "Medium": "AB Body Basis",
+                    "Large": "AB Large"
+
+                },
+                "bottoms":{
+                    "Default": "Outie Default",
+                    "Smaller Ass": "SmallerAss",
+                    "Dip Hips": "DipHips"
+                }
+            },
+            "selectedSize":{
+                "top":"Medium",
+                "bottom":"Default"
+            },
+            "links":{
+                "XMA":"https://www.xivmodarchive.com/modid/101701"
+            }
+
+        },
+        {
             "name": "Eve",
             "model": "assets/models/bodies/Eve.glb",
             "material": "gen3",

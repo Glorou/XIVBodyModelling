@@ -5,23 +5,27 @@
 
         let container, camera, renderer, controls;
         let sceneL, sceneR;
-        let biboMat, gen3Mat;
+        let biboMat, gen3Mat, ABgen3;
         let meshL, meshR;
-        let manager = new THREE.LoadingManager();
-        const loader = new GLTFLoader(manager);
-        const dracoloader = new DRACOLoader(manager);
-        dracoloader.setDecoderPath('scripts/draco/');
-
-        loader.setDRACOLoader(dracoloader);
-
-
-
-        let sliderPos = window.innerWidth / 2;
-
         let modelData;
         let bodyL, bodyR;
         let menuR, menuL;
         let skeletonData = Array();
+
+
+        let manager = new THREE.LoadingManager();
+
+
+        const loader = new GLTFLoader(manager);
+        const dracoloader = new DRACOLoader(manager);
+        dracoloader.setDecoderPath('scripts/draco/');
+        loader.setDRACOLoader(dracoloader);
+        const texloader = new THREE.TextureLoader(manager);
+
+
+        let sliderPos = window.innerWidth / 2;
+
+
 
         document.getElementById("bottomarrow").addEventListener('mouseover', bottomMenu)
         document.getElementById("boobslider").addEventListener('input', changeBreastSize)
@@ -275,6 +279,8 @@
                     mesh.material = biboMat;
                 }else if(model.material == "gen3"){
                     mesh.material = gen3Mat;
+                }else if(model.material == "ABgen3"){
+                    mesh.material = ABgen3;
                 }
             }
         }
@@ -376,28 +382,17 @@
 
         }
             
-        function populateVariants(){
-
-        }
-
-        function setVariant(){
-
-        }
 
         function initMats() {
 
-            var texloader = new THREE.TextureLoader();
+
             var biboBase = texloader.load('assets/textures/bibo_mid_base.png');
             var biboNorm = texloader.load('assets/textures/bibo_mid_norm.png');
 
-            var gen3Base = texloader.load('assets/textures/Gen3Diffuse.png');
-            var gen3Norm = texloader.load('assets/textures/Gen3Normal.png');
 
             biboBase.flipY = false;
             biboNorm.flipY = false;
 
-            gen3Base.flipY = false;
-            gen3Norm.flipY = false;
 
             biboMat = new THREE.MeshPhysicalMaterial({
                 normalMap: biboNorm,
@@ -406,15 +401,36 @@
                 vertexColors: false,
 
             });
+            setupSecondaryMats();
+        }
+
+        async function setupSecondaryMats(){
+
+            var gen3Base = texloader.load('assets/textures/Gen3Diffuse.png');
+            var gen3Norm = texloader.load('assets/textures/Gen3Normal.png');
+
+            var ABBase = texloader.load('assets/textures/ABBase.png');
+            var ABNorm = texloader.load('assets/textures/ABNorm.png');
+
+            gen3Base.flipY = false;
+            gen3Norm.flipY = false;
+            ABBase.flipY = false;
+            ABNorm.flipY = false;
 
             gen3Mat = new THREE.MeshPhysicalMaterial({
-                normalMap: gen3Norm,
-                map: gen3Base,
-                reflectivity: 0.6000000238418579,
-                vertexColors: false,
+            normalMap: gen3Norm,
+            map: gen3Base,
+            reflectivity: 0.6000000238418579,
+            vertexColors: false,
 
             });
+            ABgen3 = new THREE.MeshPhysicalMaterial({
+            normalMap: gen3Norm,
+            map: ABBase,
+            reflectivity: 0.6000000238418579,
+            vertexColors: false,
 
+            });
         }
 
         async function setupMeshes() {
