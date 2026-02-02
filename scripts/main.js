@@ -319,7 +319,7 @@
                 skR.getBoneByName("j_mune_l")
             );
 
-            var vector = new THREE.Vector3(height, width, depth);
+            var vector = new THREE.Vector3(width, depth, height);
             breastBones.forEach(bone => {
                 bone.scale.copy(vector);
             });
