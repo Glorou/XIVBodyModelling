@@ -286,8 +286,6 @@
         }
 
         function changePrimaryShape(option, side, subMesh){
-
-
             if(side == "leftmenu"){
                 var id = option.value;
                 
