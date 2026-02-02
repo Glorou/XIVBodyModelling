@@ -19,6 +19,10 @@
             "selectedSize":{
                 "top":"Medium",
                 "bottom":"Large"
+            },
+            "links":{
+                "XMA":"https://www.xivmodarchive.com/modid/38550",
+                "Helio": "https://heliosphere.app/mod/ftaxs2xnvh7d75v2yvwf0tmsb4"
             }
         },
         {
@@ -48,7 +52,11 @@
                 
             }
             ,
-            "selectedVariant":"Default"
+            "selectedVariant":"Default",
+            "links":{
+                "XMA":"https://www.xivmodarchive.com/modid/62528",
+                "Helio": "https://heliosphere.app/mod/yab"
+            }
 
         },
         {
@@ -72,6 +80,10 @@
             "selectedSize":{
                 "top":"Medium",
                 "bottom":"Large"
+            },
+            "links":{
+                "XMA":"https://www.xivmodarchive.com/modid/29029",
+                "Helio": "https://heliosphere.app/mod/bibo"
             }
         },
         {
@@ -102,7 +114,11 @@
                 "Hazelnut" : "Hazelnut",
                 "Pushup" : "Pushup"
             },
-            "selectedVariant":"Default"
+            "selectedVariant":"Default",
+            "links":{
+                "XMA":"https://www.xivmodarchive.com/modid/135815",
+                "Helio": "https://heliosphere.app/mod/neolithe"
+            }
         },
         {
             "name": "Eve",
@@ -122,6 +138,9 @@
             "selectedSize":{
                 "top":"Default",
                 "bottom":"Default"
+            },
+            "links":{
+                "XMA":"https://www.xivmodarchive.com/modid/15799"
             }
 
         }

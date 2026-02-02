@@ -157,6 +157,17 @@
             menu.querySelector('.currentSize').innerText = body.selectedSize["top"] + " : " + body.selectedSize["bottom"];
             var side = menu.id;
 
+            var links = menu.querySelector(".links");
+            links.innerHTML = '';
+            for(var k in body.links){
+                var opt = document.createElement('a');
+                opt.href = body.links[k];
+                opt.target = "_blank";
+                opt.innerHTML = k;
+                links.appendChild(opt)
+            }
+
+
             var bodyMenu = menu.querySelector(".bodyMenu");
             bodyMenu.innerHTML = '';
             bodyMenu.addEventListener("change",function(){changeBody(this, side)})
