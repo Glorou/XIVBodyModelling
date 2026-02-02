@@ -176,6 +176,23 @@ a, button, input, select {
 
 }
 
+.popup{
+	background:  rgba(114, 114, 114, 0.6);
+	width: 30%;
+	height: 30%;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	display: none;
+	grid-column: 2;
+	text-align: center;
+	transform: translate(-50%, -50%);
+}
+
+.popup ol{
+	line-height: 16px;
+}
 
 
 

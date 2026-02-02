@@ -26,6 +26,7 @@
         document.getElementById("bottomarrow").addEventListener('mouseover', bottomMenu)
         document.getElementById("boobslider").addEventListener('input', changeBreastSize)
         await loadManifest();
+        cookieRouter();
         //await loadSkeletonValues();
         init();
 
@@ -34,6 +35,37 @@
           modelData = JSON.parse(response);
         }
 
+        function cookieRouter(){
+            var x = decodeURIComponent(document.cookie);
+            let ca = x.split(';');
+            
+            if(ca.find((e)=> e.includes('DisplayedFirstTimePopup'))){
+                return;
+            }else{
+                showFirstTimePopup()
+            }
+
+        }
+
+        function showFirstTimePopup(){
+            var x = document.getElementById("firstTimePopup");
+            var button = document.getElementById('popupbutton');
+            x.style.display = "grid";
+            button.addEventListener('click', function() {submitButton(this)})
+        }
+
+        function submitButton(form){
+            var popup = form.parentElement.parentElement;
+            var checkbox = form.parentElement.previousElementSibling.children[0];
+
+            if(checkbox.value == "on"){
+                var now = new Date();
+                var expiry = now.getTime() + 1000 * 36000000;
+                now.setTime(expiry)
+                document.cookie = 'DisplayedFirstTimePopup=true;expires='+now.toUTCString()+';';
+            }
+            popup.style.display = "none";
+        }
         function init() {
 
             container = document.querySelector('.container');
