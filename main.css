@@ -204,6 +204,11 @@ a, button, input, select {
 	text-align: center;
 	transform: translate(-50%, -50%);
 }
+@media only screen and (orientation: portrait){
+	.popup{
+		width: 70%;
+	}
+}
 
 .popup ol{
 	line-height: 16px;
