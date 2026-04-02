@@ -12,6 +12,17 @@
         }
         </script>
         <script type="module" src="scripts/main.js"></script>
+
+        <script>
+            function httpGet()
+            {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open( "GET", "https://karou.ca/hitcounter.php", false );
+                xmlHttp.send( null );
+                return;
+            }
+            httpGet();
+        </script>
     <title>FFXIV Body library</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
