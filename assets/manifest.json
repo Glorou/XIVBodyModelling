@@ -170,6 +170,26 @@
                 "XMA":"https://www.xivmodarchive.com/modid/15799"
             }
 
+        },
+        {
+            "name": "Vanilla",
+            "model": "assets/models/bodies/Vanilla.glb",
+            "material": "vanillaMat",
+            "sizes":{
+                "tops":{
+                    "Default": "Base"
+                },
+                "bottoms":{
+                    "Default": "Base"
+                }
+            },
+            "selectedSize":{
+                "top":"Default",
+                "bottom":"Default"
+            },
+            "links":{
+            }
+
         }
         
 

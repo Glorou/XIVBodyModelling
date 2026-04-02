@@ -5,7 +5,7 @@
 
         let container, camera, renderer, controls;
         let sceneL, sceneR;
-        let biboMat, gen3Mat, ABgen3;
+        let biboMat, gen3Mat, ABgen3, vanillaMat;
         let meshL, meshR;
         let modelData;
         let bodyL, bodyR;
@@ -281,6 +281,8 @@
                     mesh.material = gen3Mat;
                 }else if(model.material == "ABgen3"){
                     mesh.material = ABgen3;
+                }else if(model.material == "vanillaMat"){
+                    mesh.material = vanillaMat;
                 }
             }
         }
@@ -410,10 +412,16 @@
             var ABBase = texloader.load('assets/textures/ABBase.png');
             var ABNorm = texloader.load('assets/textures/ABNorm.png');
 
+            var vanillaBase = texloader.load('assets/textures/vanilla_diffuse.png');
+            var vanillaNorm = texloader.load('assets/textures/vanilla_norm.png');
+
             gen3Base.flipY = false;
             gen3Norm.flipY = false;
             ABBase.flipY = false;
             ABNorm.flipY = false;
+            vanillaBase.flipY = false;
+            vanillaNorm.flipY = false;
+
 
             gen3Mat = new THREE.MeshPhysicalMaterial({
             normalMap: gen3Norm,
@@ -428,6 +436,12 @@
             reflectivity: 0.6000000238418579,
             vertexColors: false,
 
+            });
+            vanillaMat = new THREE.MeshPhysicalMaterial({
+            normalMap: vanillaNorm,
+            map: vanillaBase,
+            reflectivity: 0.6000000238418579,
+            vertexColors: false,
             });
         }
 
