@@ -99,9 +99,7 @@
 
             initMats();
 
-
-
-
+            initStartingMeshes();
             initMeshes();
             initSlider();
             populateInfobar();
@@ -118,11 +116,14 @@
         }
 
 
-        function initMeshes() {
+        function initStartingMeshes() {
 
             loader.load(bodyL.model, function (gltf) {
-                sceneL.add(gltf.scene);
-                meshL = gltf.scene.getObjectByProperty('bindMode', "attached");
+                var mesh = gltf.scene.getObjectByProperty('bindMode', "attached");
+                mesh.material = biboMat;
+                bodyL["Scene"] = gltf.scene;
+                sceneL.add(bodyL.Scene.clone())
+                meshL = bodyL.Scene.getObjectByProperty('bindMode', "attached");
                 meshL.visible = false;
             }, undefined, function (error) {
 
@@ -131,8 +132,11 @@
             });
 
             loader.load(bodyR.model, function (gltf) {
-                sceneR.add(gltf.scene);
-                meshR = gltf.scene.getObjectByProperty('bindMode', "attached");
+                var mesh = gltf.scene.getObjectByProperty('bindMode', "attached");
+                mesh.material = biboMat;
+                bodyR["Scene"] = gltf.scene;
+                sceneR.add(bodyR.Scene.clone())
+                meshR = bodyR.Scene.getObjectByProperty('bindMode', "attached");
                 meshR.visible = false;
             }, undefined, function (error) {
 
@@ -141,6 +145,35 @@
             });
 
         }
+
+        async function initMeshes() {
+
+            for (var i = 0; i < modelData.bodies.length; i++) {
+                if(modelData.bodies[i].hasOwnProperty("Scene")){
+                    continue;
+                }
+                var promise = loader.loadAsync(modelData.bodies[i].model);
+                await promise.then(
+                 function (gltf) {
+                    var body = modelData.bodies[i];
+                    var mesh = gltf.scene.getObjectByProperty('bindMode', "attached");
+
+                    if(body.material == "bibo"){
+                        mesh.material = biboMat;
+                    }else if(body.material == "gen3"){
+                        mesh.material = gen3Mat;
+                    }else if(body.material == "ABgen3"){
+                        mesh.material = ABgen3;
+                    }else if(body.material == "vanillaMat"){
+                        mesh.material = vanillaMat;
+                    }
+                    body["Scene"] = gltf.scene;
+                }, undefined, function (error) {
+                    console.error(error);
+                });
+            }
+        }
+
 
         function populateInfobar(){
             menuL = document.querySelector('#leftmenu');
@@ -236,7 +269,6 @@
         function changeBody(option, side){
             var model = modelData.bodies.find((e) => e.name == option.value);
 
-            var mesh;
             
 
             if(side == "leftmenu"){
@@ -244,59 +276,37 @@
                     return;
                 }
                 bodyL = model;
+                sceneL.children[1].clear();
                 sceneL.remove(sceneL.children[1]);
-
-                loader.load(bodyL.model, function (gltf) {
-                sceneL.add(gltf.scene);
-                meshL = gltf.scene.getObjectByProperty('name', "Mannequin");
-                mesh = meshL;
+                var scene = model.Scene.clone();
+                sceneL.add(scene);
+                meshL = sceneL.getObjectByProperty('name', "Mannequin");
                 setInfobar(menuL, bodyL);
-                }, undefined, function (error) {
-
-                console.error(error);
-
-                });
             }else if(side == "rightmenu"){
                 if(bodyR.name == model.name){
                     return;
                 }
                 bodyR = model;
+                sceneR.children[1].clear();
                 sceneR.remove(sceneR.children[1]);
-
-                loader.load(bodyR.model, function (gltf) {
-                sceneR.add(gltf.scene);
-                meshR = gltf.scene.getObjectByProperty('name', "Mannequin");
-                mesh = meshR;
+                var scene = model.Scene.clone();
+                sceneR.add(scene);
+                meshR = sceneR.getObjectByProperty('name', "Mannequin");
                 setInfobar(menuR, bodyR);
-                }, undefined, function (error) {
-
-                console.error(error);
-
-                });
-            }
-            manager.onLoad = () =>{
-                if(model.material == "bibo"){
-                    mesh.material = biboMat;
-                }else if(model.material == "gen3"){
-                    mesh.material = gen3Mat;
-                }else if(model.material == "ABgen3"){
-                    mesh.material = ABgen3;
-                }else if(model.material == "vanillaMat"){
-                    mesh.material = vanillaMat;
-                }
+                
             }
         }
 
         function changePrimaryShape(option, side, subMesh){
             if(side == "leftmenu"){
                 var id = option.value;
-                
+                    var lmesh = sceneL.getObjectByProperty('name', "Mannequin");
                     for(var k in bodyL.sizes[subMesh]){
-                        var temp = meshL.userData.targetNames.indexOf(bodyL.sizes[subMesh][k]);
+                        var temp = lmesh.userData.targetNames.indexOf(bodyL.sizes[subMesh][k]);
                         if(id == k){
-                            meshL.morphTargetInfluences[temp] = 1;
+                            lmesh.morphTargetInfluences[temp] = 1;
                         }else{
-                            meshL.morphTargetInfluences[temp] = 0;
+                            lmesh.morphTargetInfluences[temp] = 0;
                         }
                     };   
                     bodyL.selectedSize[subMesh.slice(0,-1)] = option.value;
