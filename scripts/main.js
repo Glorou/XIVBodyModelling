@@ -123,7 +123,7 @@
                 mesh.material = biboMat;
                 bodyL["Scene"] = gltf.scene;
                 sceneL.add(bodyL.Scene.clone())
-                meshL = bodyL.Scene.getObjectByProperty('bindMode', "attached");
+                meshL = sceneL.getObjectByProperty('bindMode', "attached");
                 meshL.visible = false;
             }, undefined, function (error) {
 
@@ -136,7 +136,7 @@
                 mesh.material = biboMat;
                 bodyR["Scene"] = gltf.scene;
                 sceneR.add(bodyR.Scene.clone())
-                meshR = bodyR.Scene.getObjectByProperty('bindMode', "attached");
+                meshR = sceneR.getObjectByProperty('bindMode', "attached");
                 meshR.visible = false;
             }, undefined, function (error) {
 
@@ -313,12 +313,13 @@
                     populateInfobar(menuL, bodyL)   
             }else if(side == "rightmenu"){
                 var id = option.value;
+                var rmesh = sceneR.getObjectByProperty('name', "Mannequin");
                     for(var k in bodyR.sizes[subMesh]){
-                        var temp = meshR.userData.targetNames.indexOf(bodyR.sizes[subMesh][k]);
+                        var temp = rmesh.userData.targetNames.indexOf(bodyR.sizes[subMesh][k]);
                         if(id == k){
-                            meshR.morphTargetInfluences[temp] = 1;
+                            rmesh.morphTargetInfluences[temp] = 1;
                         }else{
-                            meshR.morphTargetInfluences[temp] = 0;
+                            rmesh.morphTargetInfluences[temp] = 0;
                         }
                     }; 
                     bodyR.selectedSize[subMesh.slice(0,-1)] = option.value;

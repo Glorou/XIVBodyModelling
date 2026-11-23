@@ -33,12 +33,16 @@
                 "tops":{
                     "Large": "LARGE",
                     "Medium": "MEDIUM",
-                    "Small": "SMALL"
+                    "Small": "SMALL",
+					"Masc": "MASC"
 
                 },
                 "bottoms":{
                     "WC": "default",
-                    "SC": "Skull Crushers"
+                    "SC": "Skull Crushers",
+					"Yanilla": "Yanilla",
+					"Lava Legs": "Lava Legs",
+					"Masc": "Masc"
                 }
             },
             "selectedSize":{
